@@ -29,6 +29,8 @@
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
                 android:textColor="@color/dark"
                 android:textSize="16sp"
                 tools:text="title"/>
@@ -37,6 +39,8 @@
                 android:id="@+id/descriptionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:textColor="#99000000"
                 android:textSize="14sp"
                 tools:text="description"/>
@@ -48,7 +52,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/dark"
+        android:layout_marginStart="96dp"
+        android:background="#1b000000"
         />
 
 </LinearLayout>

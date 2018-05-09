@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.natan.choquedecultura.models.YoutubeItem
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_youtube_cell.view.*
 
 class YoutubeAdapter(val videoClickListener: VideoClickListener): RecyclerView.Adapter<YoutubeViewHolder>() {
@@ -37,7 +38,7 @@ class YoutubeAdapter(val videoClickListener: VideoClickListener): RecyclerView.A
 class YoutubeViewHolder(var view: View): RecyclerView.ViewHolder(view) {
 
     fun bind(item: YoutubeItem) {
-        //TODO set the image
+        Picasso.get().load(item.snippet?.thumbnails?.default?.url).into(view.imageView)
         view.titleTextView.text = item.snippet?.title
         view.descriptionTextView.text = item.snippet?.description
     }

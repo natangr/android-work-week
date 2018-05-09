@@ -22,7 +22,7 @@ object RetrofitHelper {
     private fun rebuildRetrofit() {
         val client = buildClient()
         retrofit = Retrofit.Builder()
-                .baseUrl("YOUR_BASE_URL") // TODO: replace with your base url
+                .baseUrl("https://www.googleapis.com/youtube/v3/") // TODO: replace with your base url
                 .addConverterFactory(GsonConverterFactory.create(buildGson()))
                 .client(client)
                 .build()

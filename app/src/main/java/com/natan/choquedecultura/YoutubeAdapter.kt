@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.natan.choquedecultura.models.YoutubeItem
 import kotlinx.android.synthetic.main.item_youtube_cell.view.*
 
-class YoutubeAdapter(): RecyclerView.Adapter<YoutubeViewHolder>() {
+class YoutubeAdapter(val videoClickListener: VideoClickListener): RecyclerView.Adapter<YoutubeViewHolder>() {
 
     var items: List<YoutubeItem> = emptyList()
         set(value) {
@@ -25,7 +25,11 @@ class YoutubeAdapter(): RecyclerView.Adapter<YoutubeViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: YoutubeViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        holder.bind(item)
+        holder.view.setOnClickListener {
+            videoClickListener.onItemClicked(item)
+        }
     }
 
 }
@@ -37,5 +41,11 @@ class YoutubeViewHolder(var view: View): RecyclerView.ViewHolder(view) {
         view.titleTextView.text = item.snippet?.title
         view.descriptionTextView.text = item.snippet?.description
     }
+
+}
+
+interface VideoClickListener {
+
+    fun onItemClicked(item: YoutubeItem)
 
 }
